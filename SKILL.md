@@ -1,18 +1,13 @@
 ---
 name: full-send
-description: >
-  Own a coding task through the merge. Fix it, verify the fix, open a pull
-  request, babysit until CI and the auto-reviewers are clean, run one last
-  verification, and merge only when confidence is high. The person who invoked
-  this will not review the result. Use only when the user explicitly says
-  "full send", "/full-send", or tells you to ship the task and merge it
-  yourself once the checks are green.
-disable-model-invocation: true
+description: Say "full send": fix, verify, open a PR, babysit, and merge.
+when-to-use: The user says full send, /full-send, or $full-send.
+user-invocable: true
 ---
 
 # Full Send
 
-You were given a task. Finish it. The person who sent you will not look at this again, so the pull request has to be right when you merge it.
+The user said "full send". The words after that are the task. Finish it. The person who sent you will not look at this again, so the pull request has to be right when you merge it.
 
 Done means the pull request is merged and you can say, in one sentence, what you verified on the merged head. If you cannot, the pull request stays open.
 

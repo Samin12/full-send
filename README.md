@@ -12,19 +12,23 @@ Put this folder where your agent reads skills, under the name `full-send`. A sym
 
 ```sh
 git clone https://github.com/Samin12/full-send.git ~/Projects/full-send
-ln -s ~/Projects/full-send ~/.claude/skills/full-send
-ln -s ~/Projects/full-send ~/.agents/skills/full-send
-mkdir -p ~/.grok/skills
-ln -s ~/Projects/full-send ~/.grok/skills/full-send
+for dir in \
+  ~/.claude/skills \
+  ~/.agents/skills \
+  ~/.codex/skills \
+  ~/.grok/skills \
+  ~/.hermes/skills \
+  ~/.cursor/skills \
+  ~/.gemini/skills \
+  ~/.copilot/skills \
+  ~/.openclaw/skills
+do
+  mkdir -p "$dir"
+  ln -sfn ~/Projects/full-send "$dir/full-send"
+done
 ```
 
-| Agent | Start it |
-|---|---|
-| Claude Code, Cursor, Grok | `/full-send` and the task |
-| Codex | `$full-send` and the task |
-| Any agent that reads `SKILL.md` | say "full send" and the task |
-
-The skill does not auto-invoke. Merging is opt-in: name `full send` or `/full-send`.
+Saying `full send` loads the skill in Claude Code, Codex, Grok, Hermes, Cursor, Gemini CLI, Copilot, and OpenClaw. `/full-send` and `$full-send` load it too. It does not run unless that phrase is how the task is given.
 
 The agent needs `git`, the GitHub CLI (`gh auth login`), and permission to push and merge in that repo.
 
